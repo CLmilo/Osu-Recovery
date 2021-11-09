@@ -12,6 +12,7 @@ options = Options()
 options.headless = True
 options.add_argument("--window-size=1920,1200")
 
+# Inicializando driver de chrome
 ruta_driver = './chromedriver'
 webdriver = webdriver.Chrome(executable_path=ruta_driver, options=options)
 
@@ -30,16 +31,41 @@ with webdriver as driver:
     # Obteniendo el total de mapas en la página
     button = driver.find_element_by_xpath('//div[@class="page-extra"]/button')
 
-    for i in range(cantidad):
+    for i in range(cantidad+1):
         button.click()
         time.sleep(2)
-        button = driver.find_element_by_xpath('//div[@class="page-extra"]/button')
+        if i == (cantidad):
+            pass
+        else:
+            button = driver.find_element_by_xpath('//div[@class="page-extra"]/button')
 
-    # Obteniendo los links del arreglo de mapas
+    # Obteniendo el la data en bruto con el id del mapa
+    f = open("data.txt", "w")
+
     mapas = driver.find_elements_by_xpath('//div[@class="beatmap-playcount"]/a')
     for mapa in mapas:
-        link = mapa.get_attribute("href")
-        print(link)
+        link = mapa.get_attribute("style")
+        print(link, file=f)
+    f.close()
+    # Quitando las repeticiones y filtrando el id del mapa
+    lista_mapas=[]
+    with open("data.txt") as fpin:
+        for line in fpin:
+            try:
+                parts = line.rstrip("\n").split("/")
+                lista_mapas.append(parts[4])
+            except:
+                pass
+    arreglo_ordenado = set(lista_mapas)
+    lista_ordenada = list(arreglo_ordenado)
+
+    # Generando el link sin repeticiones
+    f = open("mapas.txt", "w")
+
+    for line in lista_ordenada:
+        link = "https://osu.ppy.sh/beatmapsets/"+line+"/download"
+        print(link, file=f)   
+    f.close()
     driver.close()
  
 
