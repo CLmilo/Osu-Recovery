@@ -6,7 +6,7 @@ Este programa usa Python3 con el paquete Selenium.
 
 
 ## Instrucciones de uso
----
+
 El programa requiere que el inicio de sesión para la descarga adecuada de mapas.
 
 ~~~
@@ -15,4 +15,12 @@ options arguments:
 -h, --help                          show this help message and exit
 -u USER, --user USER                Name of user
 -p PASSWORD, --password PASSWORD    Password of account
+~~~
+
+### Ejemplo de uso:
+---
+#### Linux:
+
+~~~
+python3 extraccion_mapas.py -u "Fulanito" -p "Fulanito123"
 ~~~
