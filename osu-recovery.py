@@ -4,13 +4,14 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support.expected_conditions import presence_of_all_elements_located
 from selenium.webdriver.chrome.service import Service
+from fake_useragent import UserAgent
 import time
 import requests
 import urllib3
 import argparse
 
 urllib3.disable_warnings()
-
+ua = UserAgent(use_cache_server=False)
 # Obteniendo parámetros
 parser = argparse.ArgumentParser()
 parser.add_argument("-u", "--user", help="Name of user")
@@ -120,6 +121,7 @@ with webdriver as driver:
     token_pre = parts2[6].rstrip("\n").split("'")
     token = token_pre[3]
 
+
     # Descargando los mapas
     contador2 = 0
     with open("mapas.txt") as lista_mapas:
@@ -133,7 +135,7 @@ with webdriver as driver:
             }
             headers = {
                 'Host': 'osu.ppy.sh',
-                'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:94.0) Gecko/20100101 Firefox/94.0',
+                'User-Agent': ua.opera,
                 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
                 'Accept-Language': 'es-ES,es;q=0.8,en-US;q=0.5,en;q=0.3',
                 'Accept-Encoding': 'gzip, deflate',
@@ -150,50 +152,34 @@ with webdriver as driver:
             )
             if args.novideo: 
                 response = requests.get(link, headers=headers, cookies=cookies, params=params, verify=False)
+                time.sleep(5)
             else: 
                 response = requests.get(link, headers=headers, cookies=cookies, verify=False)
+                time.sleep(5)
             ruta = './canciones/' + codigo + '.osz'
             open(ruta, 'wb').write(response.content)
             contador2 = contador2 + 1
             porcentaje = (contador2/contador)*100
-            if (porcentaje > 10 and porcentaje < 10.2):
-                print("Porcentaje descargado : "+ str(porcentaje)+ "%")
-                time.sleep(5)
-                print("Descansando 5 segundos")
-            if (porcentaje > 20 and porcentaje < 20.2):
-                print("Porcentaje descargado : "+ str(porcentaje)+ "%")
-                time.sleep(5)
-                print("Descansando 5 segundos")
-            if (porcentaje > 30 and porcentaje < 30.2):
-                print("Porcentaje descargado : "+ str(porcentaje)+ "%")
-                time.sleep(5)
-                print("Descansando 5 segundos")
-            if (porcentaje > 40 and porcentaje < 40.2):
-                print("Porcentaje descargado : "+ str(porcentaje)+ "%")
-                time.sleep(5)
-                print("Descansando 5 segundos")
-            if (porcentaje > 50 and porcentaje < 50.2):
-                print("Porcentaje descargado : "+ str(porcentaje)+ "%")
-                time.sleep(5)
-                print("Descansando 5 segundos")
-            if (porcentaje > 60 and porcentaje < 60.2):
-                print("Porcentaje descargado : "+ str(porcentaje)+ "%")
-                time.sleep(5)
-                print("Descansando 5 segundos")
-            if (porcentaje > 70 and porcentaje < 70.2):
-                print("Porcentaje descargado : "+ str(porcentaje)+ "%")
-                time.sleep(5)
-                print("Descansando 5 segundos")
-            if (porcentaje > 80 and porcentaje < 80.2):
-                print("Porcentaje descargado : "+ str(porcentaje)+ "%")
-                time.sleep(5)
-                print("Descansando 5 segundos")
-            if (porcentaje > 90 and porcentaje < 90.2):
-                print("Porcentaje descargado : "+ str(porcentaje)+ "%")
-                time.sleep(5)
-                print("Descansando 5 segundos")
+            if (porcentaje > 10 and porcentaje < 10.3):
+                print("Porcentaje descargado : "+ str(int(porcentaje))+ "%")
+            if (porcentaje > 20 and porcentaje < 20.3):
+                print("Porcentaje descargado : "+ str(int(porcentaje))+ "%")
+            if (porcentaje > 30 and porcentaje < 30.3):
+                print("Porcentaje descargado : "+ str(int(porcentaje))+ "%")
+            if (porcentaje > 40 and porcentaje < 40.3):
+                print("Porcentaje descargado : "+ str(int(porcentaje))+ "%")
+            if (porcentaje > 50 and porcentaje < 50.3):
+                print("Porcentaje descargado : "+ str(int(porcentaje))+ "%")
+            if (porcentaje > 60 and porcentaje < 60.3):
+                print("Porcentaje descargado : "+ str(int(porcentaje))+ "%")
+            if (porcentaje > 70 and porcentaje < 70.3):
+                print("Porcentaje descargado : "+ str(int(porcentaje))+ "%")
+            if (porcentaje > 80 and porcentaje < 80.3):
+                print("Porcentaje descargado : "+ str(int(porcentaje))+ "%")
+            if (porcentaje > 90 and porcentaje < 90.3):
+                print("Porcentaje descargado : "+ str(int(porcentaje))+ "%")
             if (porcentaje == 100):
-                print("Porcentaje descargado : "+ str(porcentaje)+ "%")
+                print("Porcentaje descargado : "+ str(int(porcentaje))+ "%")
     driver.close()
 
 
