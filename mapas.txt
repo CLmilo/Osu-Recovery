@@ -1,5 +1,5 @@
-https://osu.ppy.sh/beatmapsets/63222/download
-https://osu.ppy.sh/beatmapsets/310408/download
-https://osu.ppy.sh/beatmapsets/781509/download
-https://osu.ppy.sh/beatmapsets/921889/download
 https://osu.ppy.sh/beatmapsets/826125/download
+https://osu.ppy.sh/beatmapsets/63222/download
+https://osu.ppy.sh/beatmapsets/921889/download
+https://osu.ppy.sh/beatmapsets/781509/download
+https://osu.ppy.sh/beatmapsets/310408/download
