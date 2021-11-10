@@ -26,8 +26,7 @@ options.add_argument("--window-size=1920,1200")
 # Inicializando driver de chrome
 ruta_driver = './chromedriver'
 s=Service(ruta_driver)
-webdriver = webdriver.Chrome(service=s)
-#webdriver = webdriver.Chrome(executable_path=ruta_driver, options=options)
+webdriver = webdriver.Chrome(service=s, options=options)
 
 url_home = "https://osu.ppy.sh/home"
 
@@ -55,8 +54,10 @@ with webdriver as driver:
 
     time.sleep(2)
     
+    print("Inicio de Sesión Completo [!1]")
+    
     url_perfil = driver.find_element(By.XPATH,'//a[@class="avatar avatar--nav2 js-current-user-avatar js-click-menu js-user-login--menu js-user-header"]').get_attribute("href")
-    print(url_perfil)
+    print("Perfil : " + url_perfil)
     wait = WebDriverWait(driver, 10) 
     driver.get(url_perfil)
 
@@ -68,6 +69,7 @@ with webdriver as driver:
     cantidad = (cantidad - 5)/50
     cantidad = int(cantidad)
 
+    
     # Obteniendo el total de mapas en la página
     button = driver.find_element(By.XPATH,'//div[@class="page-extra"]/button')
 
@@ -101,11 +103,13 @@ with webdriver as driver:
 
     # Generando el link sin repeticiones
     f = open("mapas.txt", "w")
-
+    contador = 0
     for line in lista_ordenada:
         link = "https://osu.ppy.sh/beatmapsets/"+line+"/download"
+        contador = contador +1 
         print(link, file=f)   
     f.close()
+    print("Cantidad de mapas a descargar : "+ str(contador) +" [!2]")
 
     # Obteniendo los headers necesarios para obtener el link de descarga real
     headers_pre = driver.get_cookies()
@@ -117,6 +121,7 @@ with webdriver as driver:
     token = token_pre[3]
 
     # Descargando los mapas
+    contador2 = 0
     with open("mapas.txt") as lista_mapas:
         for line in lista_mapas:
             parts3 = line.rstrip("\n").split("/")
@@ -143,6 +148,9 @@ with webdriver as driver:
             response = requests.get(link, headers=headers, cookies=cookies, verify=False)
             ruta = './prueba/' + codigo + '.osz'
             open(ruta, 'wb').write(response.content)
+            contador2 = contador2 + 1
+            porcentaje = (contador2/contador)*100
+            print("Porcentaje descargado : "+ str(porcentaje)+ "%")
     driver.close()
 
 
