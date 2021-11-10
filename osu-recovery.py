@@ -15,7 +15,7 @@ urllib3.disable_warnings()
 parser = argparse.ArgumentParser()
 parser.add_argument("-u", "--user", help="Name of user")
 parser.add_argument("-p", "--password", help="Password of acount")
-#parser.add_argument("-n", "--no-video", help="This options download maps only without video")
+parser.add_argument("-n", "--novideo", help="This options download maps only without video", action="store_true")
 args = parser.parse_args()
 
 # Definiendo opciones básica al selenium
@@ -55,8 +55,8 @@ with webdriver as driver:
     time.sleep(2)
     
     print("Inicio de Sesión Completo [!1]")
-    
-    url_perfil = driver.find_element(By.XPATH,'//a[@class="avatar avatar--nav2 js-current-user-avatar js-click-menu js-user-login--menu js-user-header"]').get_attribute("href")
+    time.sleep(1.5)
+    url_perfil = driver.find_element(By.XPATH,'//a[@data-click-menu-target="nav2-user-popup"]').get_attribute("href")
     print("Perfil : " + url_perfil)
     wait = WebDriverWait(driver, 10) 
     driver.get(url_perfil)
@@ -73,7 +73,7 @@ with webdriver as driver:
     # Obteniendo el total de mapas en la página
     button = driver.find_element(By.XPATH,'//div[@class="page-extra"]/button')
 
-    for i in range(0):
+    for i in range(cantidad+1):
         button.click()
         time.sleep(2)
         if i == (cantidad):
@@ -144,13 +144,56 @@ with webdriver as driver:
                 'Sec-Fetch-Site': 'same-origin',
                 'Sec-Fetch-User': '?1',
                 'Te': 'trailers',
-            }    
-            response = requests.get(link, headers=headers, cookies=cookies, verify=False)
+            }
+            params = (
+                ('noVideo', '1'),
+            )
+            if args.novideo: 
+                response = requests.get(link, headers=headers, cookies=cookies, params=params, verify=False)
+            else: 
+                response = requests.get(link, headers=headers, cookies=cookies, verify=False)
             ruta = './canciones/' + codigo + '.osz'
             open(ruta, 'wb').write(response.content)
             contador2 = contador2 + 1
             porcentaje = (contador2/contador)*100
-            print("Porcentaje descargado : "+ str(porcentaje)+ "%")
+            if (porcentaje > 10 and porcentaje < 10.2):
+                print("Porcentaje descargado : "+ str(porcentaje)+ "%")
+                time.sleep(5)
+                print("Descansando 5 segundos")
+            if (porcentaje > 20 and porcentaje < 20.2):
+                print("Porcentaje descargado : "+ str(porcentaje)+ "%")
+                time.sleep(5)
+                print("Descansando 5 segundos")
+            if (porcentaje > 30 and porcentaje < 30.2):
+                print("Porcentaje descargado : "+ str(porcentaje)+ "%")
+                time.sleep(5)
+                print("Descansando 5 segundos")
+            if (porcentaje > 40 and porcentaje < 40.2):
+                print("Porcentaje descargado : "+ str(porcentaje)+ "%")
+                time.sleep(5)
+                print("Descansando 5 segundos")
+            if (porcentaje > 50 and porcentaje < 50.2):
+                print("Porcentaje descargado : "+ str(porcentaje)+ "%")
+                time.sleep(5)
+                print("Descansando 5 segundos")
+            if (porcentaje > 60 and porcentaje < 60.2):
+                print("Porcentaje descargado : "+ str(porcentaje)+ "%")
+                time.sleep(5)
+                print("Descansando 5 segundos")
+            if (porcentaje > 70 and porcentaje < 70.2):
+                print("Porcentaje descargado : "+ str(porcentaje)+ "%")
+                time.sleep(5)
+                print("Descansando 5 segundos")
+            if (porcentaje > 80 and porcentaje < 80.2):
+                print("Porcentaje descargado : "+ str(porcentaje)+ "%")
+                time.sleep(5)
+                print("Descansando 5 segundos")
+            if (porcentaje > 90 and porcentaje < 90.2):
+                print("Porcentaje descargado : "+ str(porcentaje)+ "%")
+                time.sleep(5)
+                print("Descansando 5 segundos")
+            if (porcentaje == 100):
+                print("Porcentaje descargado : "+ str(porcentaje)+ "%")
     driver.close()
 
 
