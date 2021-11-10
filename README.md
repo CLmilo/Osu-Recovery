@@ -16,3 +16,11 @@ options arguments:
 -u USER, --user USER                Name of user
 -p PASSWORD, --password PASSWORD    Password of account
 ~~~
+
+### Ejemplo de uso:
+---
+#### Linux:
+
+~~~
+python3 extraccion_mapas.py -u "Fulanito" -p "Fulanito123"
+~~~
