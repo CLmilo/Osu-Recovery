@@ -3,7 +3,10 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support.expected_conditions import presence_of_all_elements_located
+from selenium.webdriver.chrome.service import Service
 import time
+
+
 
 
 url = "https://osu.ppy.sh/users/21461538"
@@ -14,7 +17,9 @@ options.add_argument("--window-size=1920,1200")
 
 # Inicializando driver de chrome
 ruta_driver = './chromedriver'
-webdriver = webdriver.Chrome(executable_path=ruta_driver, options=options)
+s=Service(ruta_driver)
+webdriver = webdriver.Chrome(service=s)
+#webdriver = webdriver.Chrome(executable_path=ruta_driver, options=options)
 
 with webdriver as driver:
     wait = WebDriverWait(driver, 10) 
