@@ -4,14 +4,12 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support.expected_conditions import presence_of_all_elements_located
 from selenium.webdriver.chrome.service import Service
-from fake_useragent import UserAgent
 import time
 import requests
 import urllib3
 import argparse
 
 urllib3.disable_warnings()
-ua = UserAgent(use_cache_server=False)
 # Obteniendo parámetros
 parser = argparse.ArgumentParser()
 parser.add_argument("-u", "--user", help="Name of user.")
@@ -140,7 +138,7 @@ with webdriver as driver:
             }
             headers = {
                 'Host': 'osu.ppy.sh',
-                'User-Agent': ua.opera,
+                'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:94.0) Gecko/20100101 Firefox/94.0',
                 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
                 'Accept-Language': 'es-ES,es;q=0.8,en-US;q=0.5,en;q=0.3',
                 'Accept-Encoding': 'gzip, deflate',
