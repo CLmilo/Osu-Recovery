@@ -1,5 +1,5 @@
 # Osu-Recovery
-Programa en python para recuperar todas la canciones jugadas de OSU de un perfil determinado.
+Programa para la descarga o recuperación de todas la canciones jugadas de OSU de un perfil determinado.
 
 Este programa usa Python3 con el paquete Selenium.
 
