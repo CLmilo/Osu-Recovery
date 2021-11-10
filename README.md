@@ -42,9 +42,11 @@ El programa requiere que el inicio de sesión para la descarga adecuada de mapas
 ~~~
 usage: extraccion_mapas.py [-h] [-u USER] [-p PASSWORD]
 options arguments:
--h, --help                          show this help message and exit
--u USER, --user USER                Name of user
--p PASSWORD, --password PASSWORD    Password of account
+-h, --help                              show this help message and exit.
+-u USER, --user USER                    Name of user.
+-p PASSWORD, --password PASSWORD        Password of account.
+-n, --novideo                           This options downloads maps only without video.
+-ou, OTHERUSER, --otheruser OTHERUSER   This option allows you to download maps from other users.
 ~~~
 
 ### Ejemplo de uso:
@@ -52,5 +54,6 @@ options arguments:
 #### Linux:
 
 ~~~
-python3 extraccion_mapas.py -u "Fulanito" -p "Fulanito123"
+python3 osu-recovery.py -u "Fulanito" -p "Fulanito123"
+python3 osur-recovery.py -u "Fulanito" -p "Fulanito123" -n -ou "https://osu.ppy.sh/users/7562902" 
 ~~~
