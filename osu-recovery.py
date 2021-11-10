@@ -55,8 +55,8 @@ with webdriver as driver:
     time.sleep(2)
     
     print("Inicio de Sesión Completo [!1]")
-    
-    url_perfil = driver.find_element(By.XPATH,'//a[@class="avatar avatar--nav2 js-current-user-avatar js-click-menu js-user-login--menu js-user-header"]').get_attribute("href")
+    time.sleep(1.5)
+    url_perfil = driver.find_element(By.XPATH,'//a[@data-click-menu-target="nav2-user-popup"]').get_attribute("href")
     print("Perfil : " + url_perfil)
     wait = WebDriverWait(driver, 10) 
     driver.get(url_perfil)
@@ -156,7 +156,15 @@ with webdriver as driver:
             open(ruta, 'wb').write(response.content)
             contador2 = contador2 + 1
             porcentaje = (contador2/contador)*100
+            if (porcentaje > 10 and porcentaje < 10.2):
+                print("Porcentaje descargado : "+ str(porcentaje)+ "%")
+                time.sleep(5)
+                print("Descansando 5 segundos")
             if (porcentaje > 20 and porcentaje < 20.2):
+                print("Porcentaje descargado : "+ str(porcentaje)+ "%")
+                time.sleep(5)
+                print("Descansando 5 segundos")
+            if (porcentaje > 30 and porcentaje < 30.2):
                 print("Porcentaje descargado : "+ str(porcentaje)+ "%")
                 time.sleep(5)
                 print("Descansando 5 segundos")
@@ -164,11 +172,23 @@ with webdriver as driver:
                 print("Porcentaje descargado : "+ str(porcentaje)+ "%")
                 time.sleep(5)
                 print("Descansando 5 segundos")
+            if (porcentaje > 50 and porcentaje < 50.2):
+                print("Porcentaje descargado : "+ str(porcentaje)+ "%")
+                time.sleep(5)
+                print("Descansando 5 segundos")
             if (porcentaje > 60 and porcentaje < 60.2):
                 print("Porcentaje descargado : "+ str(porcentaje)+ "%")
                 time.sleep(5)
                 print("Descansando 5 segundos")
+            if (porcentaje > 70 and porcentaje < 70.2):
+                print("Porcentaje descargado : "+ str(porcentaje)+ "%")
+                time.sleep(5)
+                print("Descansando 5 segundos")
             if (porcentaje > 80 and porcentaje < 80.2):
+                print("Porcentaje descargado : "+ str(porcentaje)+ "%")
+                time.sleep(5)
+                print("Descansando 5 segundos")
+            if (porcentaje > 90 and porcentaje < 90.2):
                 print("Porcentaje descargado : "+ str(porcentaje)+ "%")
                 time.sleep(5)
                 print("Descansando 5 segundos")
