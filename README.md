@@ -6,7 +6,7 @@ Este programa usa Python3 con el paquete Selenium.
 
 
 ## Instrucciones de uso
----
+
 El programa requiere que el inicio de sesión para la descarga adecuada de mapas.
 
 ~~~
