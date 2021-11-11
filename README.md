@@ -59,6 +59,12 @@ Para el uso del programa de debe abrir una terminal y dirigirse a la carpeta "Os
 
 El programa requiere que el inicio de sesión para la descarga adecuada de mapas.
 
+Se tiene que descargar en orden la parte 0 para los de 1-99, parte 1 para 100-199, parte 2 para 200-299, etc
+
+Cada parte tiene que tener un tiempo de separación de 10 minutos mínimo o se tendrá un problema gracias al límite de descargas en menos de 10 min, **SI DESCARGAS SIN RESPETAR ESTE TIEMPO ENTONCES SE DESCARGARÁN CON ERROR MUCHOS MAPAS Y TE BLOQUEARÁN UNOS MINUTOS CON ERROR 429**
+
+**En Caso de usar Linux, cambia la línea del código en python, cambias "ruta_driver = './chromedriver.exe" a "ruta_driver = './chromedriver"**
+
 ~~~
 usage: extraccion_mapas.py [-h] [-u USER] [-p PASSWORD]
 options arguments:
