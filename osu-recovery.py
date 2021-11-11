@@ -28,9 +28,9 @@ options.headless = True
 options.add_argument("--window-size=1920,1200")
 
 # Inicializando driver de chrome
-ruta_driver = './chromedriver'
-s=Service(ruta_driver)
-webdriver = webdriver.Chrome(service=s, options=options)
+ruta_driver = './chromedriver.exe'
+webdriver = webdriver.Chrome(executable_path=ruta_driver, options=options)
+#s=Service(ruta_driver)
 
 url_home = "https://osu.ppy.sh/home"
 
@@ -53,7 +53,7 @@ with webdriver as driver:
     password_field.clear()
     password_field.send_keys(args.password)
 
-    button_login = driver.find_element(By.XPATH,'//button[@data-disable-with="Iniciando sesión..."]')
+    button_login = driver.find_element(By.XPATH,'//button[@class="btn-osu-big btn-osu-big--nav-popup js-captcha--submit-button"]')
     button_login.click()
 
     time.sleep(2)
@@ -66,6 +66,9 @@ with webdriver as driver:
         url_perfil = driver.find_element(By.XPATH,'//a[@data-click-menu-target="nav2-user-popup"]').get_attribute("href")
     
     print("Perfil : " + url_perfil)
+
+    if not(os.path.exists('canciones')):
+        os.mkdir('canciones')
     
     if not(os.path.exists('./mapas.txt')):
         wait = WebDriverWait(driver, 10) 
@@ -188,7 +191,7 @@ with webdriver as driver:
     driver.close()
 
 
-    
+    #python osu-recovery.py -u ByZeleYT -p rofanoch1234 -pt 0
     
  
 
