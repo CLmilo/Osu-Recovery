@@ -53,7 +53,7 @@ with webdriver as driver:
     password_field.clear()
     password_field.send_keys(args.password)
 
-    button_login = driver.find_element(By.XPATH,'//button[@data-disable-with="Iniciando sesión..."]')
+    button_login = driver.find_element(By.XPATH,'//button[@class="btn-osu-big btn-osu-big--nav-popup js-captcha--submit-button"]')
     button_login.click()
 
     time.sleep(2)
