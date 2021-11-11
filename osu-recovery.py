@@ -28,7 +28,7 @@ options.headless = True
 options.add_argument("--window-size=1920,1200")
 
 # Inicializando driver de chrome
-ruta_driver = './chromedriver'
+ruta_driver = './chromedriver.exe'
 s=Service(ruta_driver)
 webdriver = webdriver.Chrome(service=s, options=options)
 
