@@ -1,6 +1,6 @@
 # Osu-Recovery (Deprecated)
 Programa para la descarga o recuperación de todas la canciones jugadas de OSU de un perfil determinado.
-##Esta versión es obsoleta, ir a [Osu-Downloader-of-maps](https://github.com/CLmilo/Osu-Downloader-of-maps)
+## Esta versión es obsoleta, ir a [Osu-Downloader-of-maps](https://github.com/CLmilo/Osu-Downloader-of-maps)
 Este programa usa Python3 con el paquete Selenium.
 
 ## Requerimientos
